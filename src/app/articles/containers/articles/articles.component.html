@@ -1,6 +1,9 @@
 <mat-card appearance="outlined">
-  <mat-toolbar color="primary">Artigos</mat-toolbar>
-
+  <mat-toolbar color="primary">Pesquisa</mat-toolbar>
+  <div class="mat-elevation-z8">
+    <app-article-search-form (searchEvent)="submit($event)"></app-article-search-form>
+  </div>
+  <mat-toolbar color="primary" class="tb-artigos">Notícias</mat-toolbar>
   <div class="mat-elevation-z8">
     <app-articles-list *ngIf="articles$ | async as articles; else loading" [articles]="articles">
     </app-articles-list>

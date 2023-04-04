@@ -8,12 +8,10 @@ import { MatListModule } from '@angular/material/list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { ClipboardModule } from '@angular/cdk/clipboard'
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   exports: [
@@ -25,13 +23,11 @@ import { ClipboardModule } from '@angular/cdk/clipboard'
     MatSelectModule,
     MatIconModule,
     MatButtonModule,
-    MatTableModule,
     MatDialogModule,
-    MatSnackBarModule,
     MatSidenavModule,
-    MatAutocompleteModule,
     MatGridListModule,
-    ClipboardModule
+    MatDatepickerModule,
+    MatNativeDateModule
   ]
 })
 export class AppMaterialModule { }

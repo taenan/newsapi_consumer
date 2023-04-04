@@ -6,6 +6,7 @@ import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/err
 import { ArticlesService } from 'src/app/articles/services/articles.service';
 import { Article } from 'src/app/articles/model/article'
 import { HttpErrorResponse } from '@angular/common/http';
+import { ArticleSearch } from '../../model/article-search';
 
 @Component({
   selector: 'app-articles',
@@ -26,6 +27,15 @@ export class ArticlesComponent implements OnInit {
 
   refresh() {
     this.articles$ = this.articlesService.list().pipe(
+      catchError((e) => {
+        this.onError(e);
+        return of([]);
+      })
+    );
+  }
+
+  submit(search: ArticleSearch) {
+    this.articles$ = this.articlesService.search(search).pipe(
       catchError((e) => {
         this.onError(e);
         return of([]);

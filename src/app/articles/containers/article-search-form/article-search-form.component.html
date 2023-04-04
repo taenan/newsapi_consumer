@@ -1,0 +1,40 @@
+<div class="search-container">
+  <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+    <div class="search-form-fields">
+      <mat-form-field class="search-q">
+        <mat-label>Pesquisar...</mat-label>
+        <input matInput formControlName="q" placeholder="Pesquisar...">
+        <mat-error *ngIf="searchForm.get('q')?.invalid">{{ getErrorMessage('q') }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Ordem</mat-label>
+        <mat-select formControlName="sortBy">
+          <mat-option *ngFor="let option of sortOptions" [value]="option.value">{{ option.label }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="searchForm.get('sortBy')?.invalid">{{ getErrorMessage('sortBy') }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Data Inicial</mat-label>
+        <input matInput [matDatepicker]="fromPicker" placeholder="Data Inicial" formControlName="from" [min]="minDate"
+          [max]="maxDate" required>
+        <mat-hint>DD/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="fromPicker"></mat-datepicker-toggle>
+        <mat-datepicker #fromPicker></mat-datepicker>
+        <mat-error *ngIf="searchForm.get('from')?.invalid">{{ getErrorMessage('from') }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Data Final</mat-label>
+        <input matInput [matDatepicker]="toPicker" placeholder="Data Final" formControlName="to" [min]="minDate"
+          [max]="maxDate" required>
+        <mat-hint>DD/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="toPicker"></mat-datepicker-toggle>
+        <mat-datepicker #toPicker></mat-datepicker>
+        <mat-error *ngIf="searchForm.get('to')?.invalid">{{ getErrorMessage('to') }}</mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit" class="submit-button">Search</button>
+    </div>
+  </form>
+</div>
