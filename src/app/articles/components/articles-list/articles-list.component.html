@@ -1,0 +1,25 @@
+<ng-template [ngIf]="articles.length == 0">
+  Nenhum Artigo encontrado.
+</ng-template>
+<mat-grid-list [cols]="cols" rowHeight="600px">
+  <mat-grid-tile *ngFor="let article of articles">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <img mat-card-avatar class="example-header-image" [attr.src]="article.urlToImage" loading="lazy">
+        <mat-card-title>{{ article.source.name }}</mat-card-title>
+        <mat-card-subtitle title="{{ article.author }}">{{ article.author | truncateText }}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image [attr.src]="article.urlToImage" loading="lazy">
+      <mat-card-content>
+        <p class="card-title" title="{{ article.title }}">{{ article.title | truncateText }}</p>
+        <p title="{{ article.description }}">{{ article.description | truncateText : 80 }}</p>
+        <span class="card-footer-text">Publicado em: {{ article.publishedAt | datePt }}</span>
+      </mat-card-content>
+      <mat-card-actions>
+        <a mat-raised-button href="{{ article.url }}" target="_blank" title="Ir para {{ article.url }}" color="primary">
+          ACESSAR NOTÍCIA<mat-icon aria-hidden="false" fontIcon="link"></mat-icon>
+        </a>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
